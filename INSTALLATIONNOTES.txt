@@ -1,0 +1,11 @@
+Installation Notes:
+
+rails plugin install git://github.com/johnu/ujs_sort_helper.git
+https://github.com/johnu/ujs_sort_helper
+make sure to INSTALL
+
+rails generate ujs_sort_helper:install
+
+Refer to:
+http://scottmotte.com/archives/184.html
+

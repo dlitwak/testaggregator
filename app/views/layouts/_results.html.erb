@@ -1,0 +1,21 @@
+<table class="round">
+  <tr>
+	<th>Route</th>
+    <th>Efficiency Rank</th> 
+	<th>Price</th> 
+	<th>Estimated Real Price</th> 
+
+  </tr>
+	<% @results.each do |result| %>
+
+	  <tr>
+		<td style="vertical-align:top"><%= result.route %></td>
+		<td style="vertical-align:top"><%= result.escore %></td>
+		<td style="vertical-align:top"><%= result.price %></td>
+		<td style="vertical-align:top"><%= result.real_price %></td>
+
+		
+	  </tr>
+	<% end %>
+
+</table>

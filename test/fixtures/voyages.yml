@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  escore: 1.5
+  real_price: 1.5
+  position: 1
+  start_date_time: 2011-06-17 10:37:52
+  end_date_time: 2011-06-17 10:37:52
+  stops: 1
+  price_tag: 1.5
+  transit_time: 1.5
+  transportation: MyString
+
+two:
+  escore: 1.5
+  real_price: 1.5
+  position: 1
+  start_date_time: 2011-06-17 10:37:52
+  end_date_time: 2011-06-17 10:37:52
+  stops: 1
+  price_tag: 1.5
+  transit_time: 1.5
+  transportation: MyString

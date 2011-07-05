@@ -1,0 +1,68 @@
+
+	<div id="notaccordion">
+		<h3><a href="#">Change Locations</a></h3>
+			<div class="addspace">
+				<div class="ui-widget">
+					<label for="start-location">Start Location: </label>
+					<input id="start-location" />
+				</div>
+				<div class="ui-widget">
+					<label for="end-location">End Location: </label>
+					<input id="end-location" />
+				</div>
+			</div>
+	
+		<h3><a href="#">Flight Times</a></h3>
+		<div id="contact" class="addspace">
+			<div id="sliders">
+						<style>
+					#slider-range,#SlideMax,#slider-range2,#SlideMax2{width:180px;}
+					#slider-range,#time, #SlideMax, #slider-range2,#time2, #SlideMax2{margin:10px;display:block;}
+				</style>
+				Departure Time:
+				<div id="slider-range"></div>
+				<span id="SlideMax"></span>
+				<span id="time"></span>
+				Return Time:
+				<div id="slider-range2"></div>
+				<span id="SlideMax2"></span>
+				<span id="time2"></span>
+			</div>
+		</div>
+		<h3><a href="#">Stops/Layovers</a></h3>
+		<div class="addspace">
+			<form name="myform" action="http://www.mydomain.com/myformhandler.cgi" method="POST">
+				<div align="center">
+					Max # Layovers: 
+					<select name="mydropdown">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="3">4</option>
+					<option value="3">5</option>
+					</select>
+				</div>
+			</form>
+		</div>
+		<h3><a href="#">Change Dates</a></h3>
+		<div class="addspace">
+			<div class="demo">
+
+			<p>Date: <input type="text" id="datepicker-start"></p>
+
+			</div><!-- End demo -->
+			<div class="demo">
+
+			<p>Date: <input type="text" id="datepicker-end"></p>
+
+			</div><!-- End demo -->
+		</div>
+		<h3><a href="#">Cabin</a></h3>
+		<div class="addspace">
+			<div id="format">
+				<input type="checkbox" id="check1" /><label for="check1">Economy</label>
+				<input type="checkbox" id="check2" /><label for="check2">Business</label>
+				<input type="checkbox" id="check3" /><label for="check3">First</label>
+			</div>
+		</div>
+	</div>

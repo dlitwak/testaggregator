@@ -1,0 +1,12 @@
+		<div class="explanationtitle">
+			London City Center > Stanstead Airport
+		</div>
+		<div id="choices1">
+			<label for="taxi1">Taxi </label><input type="radio" id="taxi1" name="trans1" value="taxi" />
+			<label for="shuttle1">Shuttle </label><input type="radio" id="shuttle1" name="trans1" value="shuttle"/>
+			<label for="train1">Train </label><input type="radio" id="train1" name="trans1" value="train"/>
+			<label for="bus1">Bus </label><input type="radio" id="bus1" name="trans1" value="bus"/>
+		</div>
+		<div id="tweenresult1">
+		Estimated Cost: $15
+		</div>

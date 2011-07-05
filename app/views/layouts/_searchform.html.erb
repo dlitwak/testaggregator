@@ -1,0 +1,91 @@
+		<div id="sharing_hide" style="display:block">
+				<%= form_tag results_path, :method => 'get' do %>
+						<div id="locations" style="margin-top: 20px;">
+							<div class="ui-widget"style="display:inline">
+								<label for="start">Start </label>
+								<input id="start" name="start_location">
+							</div>
+
+							<div class="ui-widget" style="display:inline">
+								<label for="end">End </label>
+								<input id="end" name="end_location">
+							</div>
+						</div>
+						<div id="dates" style="margin-top: 20px;">
+							<div style="display:inline"> 
+								<label for="start_date" style="font-weight:bold font-family: Arial">Start Date</label>
+								<input type="text" name="start_date" id="start_date" />
+							</div>
+							<div style="display:inline" id="end_date_hide">
+								<label for="end_date">End Date</label>
+								<input type="text" name="end_date" id="end_date" />
+							</div>
+						</div>
+						</br>
+						
+						<%= render 'layouts/transportationtable' %>
+						
+						<div id="choice4">
+						<table style="font-weight:bold; padding: 10px;">
+							<tr>
+								<td style="width: 180px; align: center;">
+									<input type="checkbox" id="nonstopcheckbox" name="nonstopcheckbox" value="Non-stops only" align="middle"/>
+									<label for="nonstopcheckbox" >Non-stops only</label>
+								</td>
+								<td style="width: 200px;" >
+									<input type="checkbox" id="flexdates" name="flexdatescheckbox" value="My dates are flexible" align="middle"/>
+									<label for="flexdates">My dates are flexible</label>
+								</td>
+								<td>
+									<select name="travelers">
+									  <option value="1">1 Traveler</option>
+									  <option value="2">2 Travelers</option>
+									  <option value="3">3 Travelers</option>
+									  <option value="4">4 Travelers</option>
+									  <option value="5">5 Travelers</option>
+									  <option value="6">6 Travelers</option>
+									</select>
+									
+								</td>
+								<td>
+									<select name="bags">
+									  <option value="1">1 Checked Bag</option>
+									  <option value="2">2 Checked Bags</option>
+									  <option value="3">3 Checked Bags</option>
+									  <option value="4">4 Checked Bags</option>
+									</select>
+									
+								</td>
+							</tr>
+						</table>
+						</div>
+						<div class="actions">
+							<div class="demo"> 
+								<%= submit_tag "Search" %>
+							</div> 
+						</div>
+
+					<% end %>
+
+				</div>
+				<div id="coming_soon_hide" style="display:none">
+				Coming Soon
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				
+				</div>

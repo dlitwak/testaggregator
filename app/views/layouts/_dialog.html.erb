@@ -1,0 +1,67 @@
+<table>
+<% voyages.each do |voyage| %>
+	<tr>
+		<td> <%= image_tag ("companylogothumbnails/"+voyage.company+".jpg") %></td>
+		<td>
+			From: <%= voyage.start_location %><br/> 
+			To: <%= voyage.end_location %><br/> 
+			Departure: <%= voyage.start_time.strftime("%a at %I:%M%p") %>, <%= voyage.start_date.strftime("%m/%d/%y") %>  </br>
+			Arrival: <%= voyage.end_time.strftime("%a at %I:%M%p") %>, <%= voyage.end_date.strftime("%m/%d/%y") %>  </br> 
+			Transit Time: <%= voyage.transit_time %></td>
+		<td> Book this Leg!</td>
+	</tr>
+<% end %>
+</table>
+<div class="round explanation">
+
+<div id="inbetweeners1" class="inbetweeners round2">
+<h3><a href="#">Inbetweeners</a></h3>
+	<div id="inbetween" class="round2">
+	<% @inbetweeners = result.inbetweeners %>
+		<% @inbetweeners.each do |inbetweener| %>
+		<div class="inbetween round2">
+			<%= render 'layouts/inbetweener', :inbetweener => inbetweener %>
+		</div>
+		<% end %>
+		<div class="total-tweener round2">
+		TOTAL: $40
+		</div>
+	</div>
+
+
+</div>
+<div id="taxes" class="taxes round2">
+<h3><a href="#">Extra Taxes/Visas</a></h3>
+	<div class="round2">
+		<div id="taxes1" class="round2">
+				<div class="explanationtitle">
+					Airport Taxes:
+				</div>
+				<div class="taxdescription">
+					None
+				</div>
+				<div id="taxresult1">
+				Estimated Cost: $0
+				</div>
+		</div>
+		<div id="taxes2" class="round2">
+				<div class="explanationtitle">
+					Visa Info:
+				</div>
+				<div class="taxdescription">
+					Available at border free of charge.
+				</div>
+				<div id="taxresult2">
+				Estimated Cost: $0
+				</div>
+		</div>
+
+		<div class="total-taxes round2">
+		TOTAL: $0
+		</div>
+	</div>
+
+
+</div>
+
+</div>

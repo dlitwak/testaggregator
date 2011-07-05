@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: MyString
+  escore: 1.5
+  price: 1.5
+  real_price: 1.5
+  route: MyString
+
+two:
+  id: MyString
+  escore: 1.5
+  price: 1.5
+  real_price: 1.5
+  route: MyString

@@ -1,0 +1,414 @@
+
+<div id="container" class="round">
+
+	<div id="left-bar" class="round">
+			<%= render 'layouts/notaccordion' %>
+	</div>
+	
+	<div id="voyage-listing">
+		<%= render 'layouts/voyagetabs' %>
+		<div id="transportation-reselect">
+			<%= render 'layouts/transportationtable' %>
+		</div>
+		<!-- <%= render 'layouts/graph' %> -->
+	</div>
+
+	<div id="right-bar" class="round">
+		<%= render 'layouts/rightbar' %>
+	</div>
+	
+</div>
+
+	
+	<script>
+	$(function() {
+
+		$( "#results td.dragonlythis" ).draggable({
+			appendTo: "body",
+			helper: "clone"
+		});
+		$( "#cart ol" ).droppable({
+			activeClass: "ui-state-default",
+			hoverClass: "ui-state-hover",
+			accept: ":not(.ui-sortable-helper)",
+			drop: function( event, ui ) {
+				$( this ).find( ".placeholder" ).remove();
+				$( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+			}
+		}).sortable({
+			items: "li:not(.placeholder)",
+			sort: function() {
+				// gets added unintentionally by droppable interacting with sortable
+				// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+				$( this ).removeClass( "ui-state-default" );
+			}
+		});
+	});
+	</script>	
+	
+<script type="text/javascript">
+
+
+// Create the tooltips only on document load
+$(document).ready(function() 
+{
+   // Notice the use of the each() method to acquire access to each elements attributes
+   $('#itinerary img[tooltip]').each(function()
+   {
+      $(this).qtip({
+         content: $(this).attr('tooltip'), // Use the tooltip attribute of the element for the content
+         style: 'dark' // Give it a crea mstyle to make it stand out
+      });
+   });
+});
+
+</script>
+	<script>
+	var startTime;
+var endTime;
+$("#slider-range").slider({
+    range: true, min: 0, max: 2879, values: [540, 1020], step:5, slide: slideTime, change: checkMax
+});
+	
+function slideTime(event, ui){
+    var minutes0 = parseInt($("#slider-range").slider("values", 0) % 60);
+    var hours0 = parseInt($("#slider-range").slider("values", 0) / 60 % 24);
+    var minutes1 = parseInt($("#slider-range").slider("values", 1) % 60);
+    var hours1 = parseInt($("#slider-range").slider("values", 1) / 60 % 24);
+    startTime = getTime(hours0, minutes0);
+    endTime = getTime(hours1, minutes1);
+    $("#time").text(startTime + ' - ' + endTime);
+}
+function getTime(hours, minutes) {
+    var time = null;
+    minutes = minutes + "";
+    if (hours < 12) {time = "AM";}
+    else {  time = "PM";}
+    if (hours == 0) {hours = 12;}
+    if (hours > 12) {hours = hours - 12; }
+    if (minutes.length == 1) {minutes = "0" + minutes;}
+    return hours + ":" + minutes + " " + time;
+}
+function checkMax() {
+    var size = $("#slider-range").slider("values", 1) - $("#slider-range").slider("values", 0);
+    if( size >= 1435) {
+        $("#slider-range div").addClass("ui-state-error");
+        $("#slider-range div").removeClass("ui-widget-header");
+        $("#scheduleSubmit").attr("disabled","disabled");
+        $("#scheduleSubmit").addClass("ui-state-disabled");
+        $("#scheduleSubmit").removeClass("ui-state-default");
+        $("#SlideMax").text("Cannot be more than 24 hours");
+    }
+    else {
+        $("#slider-range div").addClass("ui-widget-header");
+        $("#slider-range div").removeClass("ui-state-error");
+        $("#scheduleSubmit").attr("disabled","");
+        $("#scheduleSubmit").addClass("ui-state-default");
+        $("#scheduleSubmit").removeClass("ui-state-disabled");
+        $("#SlideMax").text("");
+    }
+}
+function add() {
+    console.log(startTime);
+    console.log(endTime);
+    $('#Schedule tbody').append('<tr>' +
+        '<td>' + startTime + '</td>' +
+        '<td>' + endTime + '</td>' +
+        '</tr>');
+}
+slideTime();
+
+
+
+
+	var startTime;
+var endTime;
+$("#slider-range2").slider({
+    range: true, min: 0, max: 2879, values: [540, 1020], step:5, slide: slideTime2, change: checkMax2
+});
+	
+function slideTime2(event, ui){
+    var minutes0 = parseInt($("#slider-range2").slider("values", 0) % 60);
+    var hours0 = parseInt($("#slider-range2").slider("values", 0) / 60 % 24);
+    var minutes1 = parseInt($("#slider-range2").slider("values", 1) % 60);
+    var hours1 = parseInt($("#slider-range2").slider("values", 1) / 60 % 24);
+    startTime = getTime2(hours0, minutes0);
+    endTime = getTime2(hours1, minutes1);
+    $("#time2").text(startTime + ' - ' + endTime);
+}
+function getTime2(hours, minutes) {
+    var time = null;
+    minutes = minutes + "";
+    if (hours < 12) {time = "AM";}
+    else {  time = "PM";}
+    if (hours == 0) {hours = 12;}
+    if (hours > 12) {hours = hours - 12; }
+    if (minutes.length == 1) {minutes = "0" + minutes;}
+    return hours + ":" + minutes + " " + time;
+}
+function checkMax2() {
+    var size = $("#slider-range2").slider("values", 1) - $("#slider-range2").slider("values", 0);
+    if( size >= 1435) {
+        $("#slider-range2 div").addClass("ui-state-error");
+        $("#slider-range2 div").removeClass("ui-widget-header");
+        $("#scheduleSubmit").attr("disabled","disabled");
+        $("#scheduleSubmit").addClass("ui-state-disabled");
+        $("#scheduleSubmit").removeClass("ui-state-default");
+        $("#SlideMax2").text("Cannot be more than 24 hours");
+    }
+    else {
+        $("#slider-range2 div").addClass("ui-widget-header");
+        $("#slider-range2 div").removeClass("ui-state-error");
+        $("#scheduleSubmit").attr("disabled","");
+        $("#scheduleSubmit").addClass("ui-state-default");
+        $("#scheduleSubmit").removeClass("ui-state-disabled");
+        $("#SlideMax2").text("");
+    }
+}
+function add() {
+    console.log(startTime);
+    console.log(endTime);
+    $('#Schedule tbody').append('<tr>' +
+        '<td>' + startTime + '</td>' +
+        '<td>' + endTime + '</td>' +
+        '</tr>');
+}
+slideTime2();
+
+
+	$(function() {
+		$( "button, input:submit, a", "#price-sort-to").button();
+		$( "a", "#price-sort" ).click(function() { return false; });
+	});
+		$(function() {
+		$( "button, input:submit, a","#price-sort-return").button();
+		$( "a", "#price-sort" ).click(function() { return false; });
+	});
+	</script>
+
+	<script>
+	$(function() {
+		var stop = false;
+		$( "#accordion h3" ).click(function( event ) {
+			if ( stop ) {
+				event.stopImmediatePropagation();
+				event.preventDefault();
+				stop = false;
+			}
+		});
+		$( "#accordion" )
+			.accordion({
+				header: "> div > h3"
+				
+			})
+			.sortable({
+				axis: "y",
+				handle: "h3",
+				stop: function() {
+					stop = true;
+				}
+			});
+	});
+	</script>
+	<script>
+	$(function() {
+		$( "#datepicker-start" ).datepicker({
+			showOn: "button",
+			buttonImage: "images/calendar.gif",
+			buttonImageOnly: true
+		});
+	});
+		$(function() {
+		$( "#datepicker-end" ).datepicker({
+			showOn: "button",
+			buttonImage: "images/calendar.gif",
+			buttonImageOnly: true
+		});
+	});
+	</script>
+
+	<script>
+	$(function() {
+		$( "#tabs" ).tabs({
+			cookie: {
+				// store cookie for a day, without, it would be a session cookie
+				expires: 1
+			}
+		});
+	});
+	</script>
+
+
+
+
+	<script type="text/javascript">
+	$(function() {
+		
+
+		$("#notaccordion").addClass("ui-accordion ui-widget ui-helper-reset")
+		
+		.find("h3")
+			.addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom")
+			.prepend('<span class="ui-icon ui-icon-triangle-1-e"/>')
+			.click(function() {
+				$(this).toggleClass("ui-accordion-header-active").toggleClass("ui-state-active")
+					.toggleClass("ui-state-default").toggleClass("ui-corner-bottom")
+				.find("> .ui-icon").toggleClass("ui-icon-triangle-1-e").toggleClass("ui-icon-triangle-1-s")
+				.end().next().toggleClass("ui-accordion-content-active").toggle();
+				return false;
+			})
+			.next().addClass("ui-helper-reset ui-widget-content ui-corner-bottom");
+	});
+	</script>
+		<script type="text/javascript">
+	$(function() {
+		
+
+		$(".inbetweeners").addClass("ui-accordion ui-widget ui-helper-reset")
+		
+		.find("h3")
+			.addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom")
+			.prepend('<span class="ui-icon ui-icon-triangle-1-e"/>')
+			.click(function() {
+				$(this).toggleClass("ui-accordion-header-active").toggleClass("ui-state-active")
+					.toggleClass("ui-state-default").toggleClass("ui-corner-bottom")
+				.find("> .ui-icon").toggleClass("ui-icon-triangle-1-e").toggleClass("ui-icon-triangle-1-s")
+				.end().next().toggleClass("ui-accordion-content-active").toggle();
+				return false;
+			})
+			.next().addClass("ui-helper-reset ui-widget-content ui-corner-bottom");
+	});
+	</script>
+			<script type="text/javascript">
+	$(function() {
+		
+
+		$("#taxes").addClass("ui-accordion ui-widget ui-helper-reset")
+		
+		.find("h3")
+			.addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom")
+			.prepend('<span class="ui-icon ui-icon-triangle-1-e"/>')
+			.click(function() {
+				$(this).toggleClass("ui-accordion-header-active").toggleClass("ui-state-active")
+					.toggleClass("ui-state-default").toggleClass("ui-corner-bottom")
+				.find("> .ui-icon").toggleClass("ui-icon-triangle-1-e").toggleClass("ui-icon-triangle-1-s")
+				.end().next().toggleClass("ui-accordion-content-active").toggle();
+				return false;
+			})
+			.next().addClass("ui-helper-reset ui-widget-content ui-corner-bottom");
+	});
+	</script>
+
+	<script>
+	$(function() {
+		
+		$( "#format" ).buttonset();
+	});
+	</script>
+	<script>
+	// increase the default animation speed to exaggerate the effect
+	$.fx.speeds._default = 1000;
+
+	$(function() {
+		$( "#dialog0" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "slide",
+			width: "525",
+			height: "550"
+		});
+		
+		$( "#details-button0" ).click(function() {
+			$( "#dialog0" ).dialog( "open" );
+			return false;
+		});
+		//}
+	});
+
+	$(function() {
+			$( "#details-button0" ).button();
+			$( "a", ".demo" ).click(function() { return false; });
+	});
+</script>
+	<script>
+	// increase the default animation speed to exaggerate the effect
+	$.fx.speeds._default = 1000;
+
+	$(function() {
+		$( "#dialog1" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "slide",
+			width: "525",
+			height: "550"
+		});
+		
+		$( "#details-button1" ).click(function() {
+			$( "#dialog1" ).dialog( "open" );
+			return false;
+		});
+		//}
+	});
+
+	$(function() {
+			$( "#details-button1" ).button();
+			$( "a", ".demo" ).click(function() { return false; });
+	});
+</script>
+	<script>
+	// increase the default animation speed to exaggerate the effect
+	$.fx.speeds._default = 1000;
+
+	$(function() {
+		$( "#dialog2" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "slide",
+			width: "525",
+			height: "550"
+		});
+		
+		$( "#details-button2" ).click(function() {
+			$( "#dialog2" ).dialog( "open" );
+			return false;
+		});
+		//}
+	});
+
+	$(function() {
+			$( "#details-button2" ).button();
+			$( "a", ".demo" ).click(function() { return false; });
+	});
+</script>
+	
+	
+		<style>
+	.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
+	</style>
+	<script>
+	$(function() {
+		function log( message ) {
+			$( "<div/>" ).text( message ).prependTo( "#log" );
+			$( "#log" ).attr( "scrollTop", 0 );
+		}
+
+		$( "#start-location" ).autocomplete({
+			source: "search.php",
+			minLength: 2,
+			select: function( event, ui ) {
+				log( ui.item ?
+					"Selected: " + ui.item.value + " aka " + ui.item.id :
+					"Nothing selected, input was " + this.value );
+			}
+		});
+		$( "#end-location" ).autocomplete({
+			source: "search.php",
+			minLength: 2,
+			select: function( event, ui ) {
+				log( ui.item ?
+					"Selected: " + ui.item.value + " aka " + ui.item.id :
+					"Nothing selected, input was " + this.value );
+			}
+		});
+	});
+	</script>

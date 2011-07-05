@@ -1,0 +1,124 @@
+
+
+<div id="search-container">
+	<div id="title-area">
+		<div id="logo">Quigle</div>
+	</div>
+	
+	<div class="round" id="main-search">
+		<div class="round" id="sub-search">
+			<div id ="trip_type" style="margin-bottom: 20px; margin-right: auto;margin-left: auto;">
+				<form>
+					<div id="radio">
+						<input type="radio" id="radio1" name="radio" checked="checked" onClick="if(this.checked){document.getElementById('end_date_hide').style.display='inline';}if(this.checked){document.getElementById('sharing_hide').style.display='block';}if(this.checked){document.getElementById('coming_soon_hide').style.display='none';}"/><label for="radio1">Roundtrip</label>
+						<input type="radio" id="radio2" name="radio" onClick="if(this.checked){document.getElementById('end_date_hide').style.display='none';}if(this.checked){document.getElementById('sharing_hide').style.display='block';}if(this.checked){document.getElementById('coming_soon_hide').style.display='none';}" /><label for="radio2">Oneway</label>
+						<input type="radio" id="radio3" name="radio" onClick="if(this.checked){document.getElementById('coming_soon_hide').style.display='block';}if(this.checked){document.getElementById('sharing_hide').style.display='none';}"/><label for="radio3">Multicity</label>
+						<input type="radio" id="radio4" name="radio" onClick="if(this.checked){document.getElementById('coming_soon_hide').style.display='block';}if(this.checked){document.getElementById('sharing_hide').style.display='none';}"/><label for="radio4">Weekend</label>
+					</div>
+				</form>
+			</div>
+			
+			
+
+			
+				<%= render 'layouts/searchform' %>
+					
+
+
+		</div>
+		<div id="newsidebar">
+			<%= render 'layouts/newsidebar' %>
+		</div>
+		
+</div>
+
+
+
+
+
+								
+
+
+
+
+
+
+<script type="text/javascript">
+$('#bikecheckbox').ezMark({checkboxCls: 'ez-checkbox-bike', checkedCls: 'ez-checked-bike', width: '73px', height: '68px'});
+
+$('#buscheckbox').ezMark({checkboxCls: 'ez-checkbox-bus', checkedCls: 'ez-checked-bus', width: '73px', height: '68px'});
+$('#ferrycheckbox').ezMark({checkboxCls: 'ez-checkbox-ferry', checkedCls: 'ez-checked-ferry', width: '73px', height: '68px'});
+$('#planecheckbox').ezMark({checkboxCls: 'ez-checkbox-plane', checkedCls: 'ez-checked-plane', width: '73px', height: '68px'});
+$('#traincheckbox').ezMark({checkboxCls: 'ez-checkbox-train', checkedCls: 'ez-checked-train', width: '73px', height: '68px'});
+$('#carcheckbox').ezMark({checkboxCls: 'ez-checkbox-car', checkedCls: 'ez-checked-car', width: '73px', height: '68px'});
+$('#taxicheckbox').ezMark({checkboxCls: 'ez-checkbox-taxi', checkedCls: 'ez-checked-taxi', width: '73px', height: '68px'});
+
+	$(function() {
+		$( "#accordion" ).accordion();
+	});
+
+$(function()
+{
+	$('#start_date').datepicker();
+});
+
+$(function()
+{
+	$('#end_date').datepicker();
+});
+	$(function() {
+		var availableTags = [
+			"Talcahuano",
+			"Temuco",
+			"Vina del Mar",
+			"Puente Alto",
+			"Talca",
+			"Valparaiso",
+			"Concepcion",
+			"Santiago",
+			"Antofagasta",
+			"San Bernardo",
+			"Rancagua"
+			
+		];
+		$( "#start" ).autocomplete({
+			source: availableTags
+		});
+			$( "#end" ).autocomplete({
+			source: availableTags
+		});
+	});
+
+		
+	$(function() {
+		$( "button, input:submit, a", ".demo" ).button();
+		$( "a", ".demo" ).click(function() { return false; });
+	});
+
+	$(function() {
+		$( "#radio" ).buttonset();
+	});
+		$(function() {
+		$( "#transportation" ).buttonset();
+	});
+	</script>
+	
+		<script type="text/javascript">
+	$(function() {
+		
+
+		$("#newsideinfo").addClass("ui-accordion ui-widget ui-helper-reset")
+		
+		.find("h3")
+			.addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom")
+			.prepend('<span class="ui-icon ui-icon-triangle-1-e"/>')
+			.click(function() {
+				$(this).toggleClass("ui-accordion-header-active").toggleClass("ui-state-active")
+					.toggleClass("ui-state-default").toggleClass("ui-corner-bottom")
+				.find("> .ui-icon").toggleClass("ui-icon-triangle-1-e").toggleClass("ui-icon-triangle-1-s")
+				.end().next().toggleClass("ui-accordion-content-active").toggle();
+				return false;
+			})
+			.next().addClass("ui-helper-reset ui-widget-content ui-corner-bottom");
+	});
+	</script>
