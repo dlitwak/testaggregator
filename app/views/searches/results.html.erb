@@ -21,6 +21,36 @@
 
 	
 	<script>
+var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=');
+        if (p.length != 2) continue;
+        b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+
+//PUT INITIAL VALUES ON CHECKBOXES, SEARCH PARAMS ETC.
+$('input[name=traincheckbox]').attr('checked', function(){if(qs["traincheckbox"]==1){return true;}else{return false;}});
+$('input[name=planecheckbox]').attr('checked', function(){if(qs["planecheckbox"]==1){return true;}else{return false;}});
+$('input[name=buscheckbox]').attr('checked', function(){if(qs["buscheckbox"]==1){return true;}else{return false;}});
+$('input[name=ferrycheckbox]').attr('checked', function(){if(qs["ferrycheckbox"]==1){return true;}else{return false;}});
+$('input[name=carcheckbox]').attr('checked', function(){if(qs["carcheckbox"]==1){return true;}else{return false;}});
+$('input[name=taxicheckbox]').attr('checked', function(){if(qs["taxicheckbox"]==1){return true;}else{return false;}});
+$('input[name=bikecheckbox]').attr('checked', function(){if(qs["bikecheckbox"]==1){return true;}else{return false;}});
+//DATES
+$('input[name=start-date]').attr('value', qs["start_date"]);
+$('input[name=end-date]').attr('value', qs["end_date"]);
+
+//LOCATIONS
+$('input[name=start-location]').attr('value', qs["start_location"]);
+$('input[name=end-location]').attr('value', qs["end_location"]);
+
+
+
 	$(function() {
 
 		$( "#results td.dragonlythis" ).draggable({

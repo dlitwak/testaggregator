@@ -30,22 +30,18 @@ class SearchesController < ApplicationController
   def results
 	sort_init 'price_tag'
 	sort_update
-	allowedvehicles = Array.[](params[:planecheckbox],params[:traincheckbox],params[:buscheckbox],params[:ferrycheckbox],params[:carcheckbox],params[:taxicheckbox],params[:bikecheckbox])
-	
-	
-	##OLD ONE, it worked, go back to it if we fail
-	@results = Result.order(params[:sort])
-	#AND end_date == :end_date 
-	#@results = Result.where("start_date == :start_date AND vehicles IN (:allowed_vehicles)", {:allowed_vehicles => allowedvehicles, :start_date => params[:start_date], :end_date=>params[:end_date]}).order(params[:sort])
-#@results = Result.where("start_date == :start_date", {:allowed_vehicles => allowedvehicles, :start_date => params[:start_date], :end_date=>params[:end_date]}).order(params[:sort])
-		# t.strftime("%m/%d/%Y")
-	#where:
-	#	start_date_time. end_date_time
-	# forms of transportation, use .include? on the "vehicles" string
+
+@results = Result.where("(NOT(train) OR :traincheckbox)AND (NOT(bus) OR :buscheckbox)AND(NOT(plane) OR :planecheckbox)AND(NOT(ferry) OR :ferrycheckbox) AND start_date = :start_date AND start_location = :start_location AND end_location = :end_location", {:traincheckbox=> params[:traincheckbox], :planecheckbox=> params[:planecheckbox], :buscheckbox=> params[:buscheckbox],:ferrycheckbox=> params[:ferrycheckbox],:taxicheckbox=> params[:taxicheckbox], :start_date => params[:start_date], :end_date=>params[:end_date],:start_location => params[:start_location], :end_location => params[:end_location]}).order(params[:sort])
+
     respond_to do |format|
       format.html # results.html.erb
       format.xml  { render :xml => @voyage }
+	format.js
     end
   end
+
+def inbetweener
+
+end
 
 end

@@ -1,15 +1,39 @@
 		<div id="sharing_hide" style="display:block">
-				<%= form_tag results_path, :method => 'get' do %>
+				<%= form_tag results_path, :method => 'get', :onSubmit =>"rememberinput('start_location', 'end_location')", :id => 'searchform' do %>
 						<div id="locations" style="margin-top: 20px;">
-							<div class="ui-widget"style="display:inline">
-								<label for="start">Start </label>
-								<input id="start" name="start_location">
+							<div id="start-address" class="round">
+								START ADDRESS
+								<div id="startstreet">
+									<label for="start_address">Start Address </label><input id="start_address" name="start_address"></br>
+								</div>
+								<div id="startcity">
+									<label for="start">City </label>
+									<div class="ui-widget"style="display:inline">
+										<input style="width:150px;" id="start" name="start_location">
+									</div>
+								</div>
+								<div id="startzipcountry">
+									<label for="startzip">Zip </label><input style="width:80px;" id="startzip" name="Start Zip Code">
+									<label for="startcountry">Country </label><input style="width:80px;" id="startcountry" name="StartCountry"></br>
+								</div>	
 							</div>
-
-							<div class="ui-widget" style="display:inline">
-								<label for="end">End </label>
-								<input id="end" name="end_location">
+							<div id="end-address" class="round">
+								END ADDRESS
+								<div id="endstreet">
+									<label for="end_address">Street </label><input id="end_address" name="end_address" ></br>
+								</div>
+								<div id="endcity">								
+									<label for="end">City</label>
+									<div class="ui-widget" style="display:inline">
+										<input style="width:150px;" id="end" name="end_location">
+									</div></br>
+								</div>
+								<div id="endzipcountry">								
+									<label for="endzip">Zip </label><input style="width:80px;" id="endzip" name="End Zip Code">
+									<label for="endcountry">Country </label><input style="width:80px;" id="endcountry" name="End Country"></br>
+								</div>							
 							</div>
+</br></br></br></br></br></br></br></br>
 						</div>
 						<div id="dates" style="margin-top: 20px;">
 							<div style="display:inline"> 
@@ -17,7 +41,7 @@
 								<input type="text" name="start_date" id="start_date" />
 							</div>
 							<div style="display:inline" id="end_date_hide">
-								<label for="end_date">End Date</label>
+								<label for="end_date">Return Date</label>
 								<input type="text" name="end_date" id="end_date" />
 							</div>
 						</div>

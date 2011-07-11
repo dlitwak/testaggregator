@@ -3,13 +3,15 @@
 margin-left: auto;
 margin-right: auto;
 width: 850px;
+font-size: .8em;
+height: 900px;
 }
 
 #main-search{
 width: 800px;
 background: #F2F2F2;
 padding: 25px;
-height: 350px;
+height: 450px;
 }
 
 #title-area{
@@ -219,13 +221,13 @@ display: block;
 }
 
 .inbetweeners{
-width:240px;
+width:250px;
 height: 220px;
 padding: 3px;
 float:left;
 }
 div.inbetweeners h3{
-width: 240px;
+width: 250px;
 }
 
 .explanation{
@@ -302,7 +304,39 @@ padding: 3px;
 div#newsideinfo h3{
 width: 200px;
 }
-
+#start-address{
+background: #F2F2F2;
+float: left;
+padding: 7px;
+}
+#end-address{
+background: #F2F2F2;
+float: right;
+padding: 7px;
+}
+#startcity{
+padding:5px;
+}
+#startzipcountry{
+padding:5px;
+}
+#startstreet{
+padding:5px;
+}
+#endcity{
+padding:5px;
+}
+#endzipcountry{
+padding:5px;
+}
+#endstreet{
+padding:5px;
+}
 .addspace{
 padding:5px;
 }
+
+.view-result{
+float: right;
+}
+

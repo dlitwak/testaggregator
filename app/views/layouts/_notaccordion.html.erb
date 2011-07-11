@@ -1,14 +1,14 @@
-
+<%= form_tag results_path, :method => 'get', :id=>'searchform', :remote=>true do %> 
 	<div id="notaccordion">
 		<h3><a href="#">Change Locations</a></h3>
 			<div class="addspace">
 				<div class="ui-widget">
 					<label for="start-location">Start Location: </label>
-					<input id="start-location" />
+					<input id="start-location" name="start-location" class="submittable"/>
 				</div>
 				<div class="ui-widget">
 					<label for="end-location">End Location: </label>
-					<input id="end-location" />
+					<input id="end-location" name="end-location" class="submittable"/>
 				</div>
 			</div>
 	
@@ -48,21 +48,27 @@
 		<div class="addspace">
 			<div class="demo">
 
-			<p>Date: <input type="text" id="datepicker-start"></p>
+			<p>Date: <input type="text" id="datepicker-start" name="start-date" class="submittable"></p>
 
 			</div><!-- End demo -->
 			<div class="demo">
 
-			<p>Date: <input type="text" id="datepicker-end"></p>
+			<p>Date: <input type="text" id="datepicker-end" name="end-date" class="submittable"></p>
 
 			</div><!-- End demo -->
 		</div>
 		<h3><a href="#">Cabin</a></h3>
 		<div class="addspace">
 			<div id="format">
-				<input type="checkbox" id="check1" /><label for="check1">Economy</label>
-				<input type="checkbox" id="check2" /><label for="check2">Business</label>
-				<input type="checkbox" id="check3" /><label for="check3">First</label>
+				<input type="checkbox" id="check1"  class="submittable"/><label for="check1">Economy</label>
+				<input type="checkbox" id="check2"  class="submittable"/><label for="check2">Business</label>
+				<input type="checkbox" id="check3"  class="submittable"/><label for="check3">First</label>
 			</div>
 		</div>
 	</div>
+<% end %>
+<script>
+$('.submittable').live('change', function() {
+  $(this).parents('form:first').submit();
+});
+</script>

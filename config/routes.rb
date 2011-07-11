@@ -16,7 +16,10 @@ Testaggregator::Application.routes.draw do
   match '/new', :to => 'searches#new'
   match '/contact', :to => 'pages#contact'
   match '/jobs', :to => 'pages#jobs'
+
 root :to => 'searches#new'
+resources :results
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 resources :searches do

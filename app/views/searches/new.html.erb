@@ -44,6 +44,12 @@
 
 
 <script type="text/javascript">
+
+
+
+
+
+
 $('#bikecheckbox').ezMark({checkboxCls: 'ez-checkbox-bike', checkedCls: 'ez-checked-bike', width: '73px', height: '68px'});
 
 $('#buscheckbox').ezMark({checkboxCls: 'ez-checkbox-bus', checkedCls: 'ez-checked-bus', width: '73px', height: '68px'});
@@ -59,28 +65,16 @@ $('#taxicheckbox').ezMark({checkboxCls: 'ez-checkbox-taxi', checkedCls: 'ez-chec
 
 $(function()
 {
-	$('#start_date').datepicker();
+	$('#start_date').datepicker({dateFormat: 'yy-mm-dd'});
 });
 
 $(function()
 {
-	$('#end_date').datepicker();
+	$('#end_date').datepicker({dateFormat: 'yy-mm-dd'});
 });
 	$(function() {
 		var availableTags = [
-			"Talcahuano",
-			"Temuco",
-			"Vina del Mar",
-			"Puente Alto",
-			"Talca",
-			"Valparaiso",
-			"Concepcion",
-			"Santiago",
-			"Antofagasta",
-			"San Bernardo",
-			"Rancagua"
-			
-		];
+			"Talcahuano","Temuco","Vina del Mar","Puente Alto","Talca","Valparaiso","Concepcion","Santiago","Antofagasta","San Bernardo","Rancagua","Paris", "Toulouse","London"];
 		$( "#start" ).autocomplete({
 			source: availableTags
 		});

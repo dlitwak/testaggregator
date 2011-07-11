@@ -5,12 +5,12 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
- result1 = Result.create(:start_location=>'London', :end_location=>'Toulouse', :transit_time=>7.5, :start_date=>'2011/08/12', :start_time=>'20:00:00',:end_date=>'2011-08-12',:end_time=>'11:00:00', :stops => 2,
-	:price_tag=>155.0, :real_price=>220.0, :escore=>4, :vehicles=>['train', 'plane'])
- result2 = Result.create(:start_location=>'London', :end_location=>'Toulouse', :transit_time=>10.25, :start_date=>'2011/08/12', :start_time=>'20:00:00',:end_date=>'2011-08-12',:end_time=>'11:00:00', :stops => 2,
-	:price_tag=>175.0, :real_price=>230.0, :escore=>5, :vehicles=>['bus', 'plane'])
- result3 = Result.create(:start_location=>'London', :end_location=>'Toulouse', :transit_time=>15, :start_date=>'2011/08/12', :start_time=>'20:00:00',:end_date=>'2011-08-12',:end_time=>'11:00:00', :stops => 5,
-	:price_tag=>115.0, :real_price=>140.0, :escore=>7, :vehicles=>['bus'])
+ result1 = Result.create(:start_location=>'London', :end_location=>'Toulouse', :transit_time=>7.5, :start_date=>'08/12/2011', :start_time=>'20:00:00',:end_date=>'2011-08-12',:end_time=>'11:00:00', :stops => 2, :price_tag=>155.0, :real_price=>220.0, :escore=>4, :vehicles=>'train, plane', :bus=>0, :train=>1, :plane=>1, :ferry=>0)
+ 
+result2 = Result.create(:start_location=>'London', :end_location=>'Toulouse', :transit_time=>10.25, :start_date=>'08/12/2011', :start_time=>'20:00:00',:end_date=>'2011-08-12',:end_time=>'11:00:00', :stops => 2,
+	:price_tag=>175.0, :real_price=>230.0, :escore=>5, :vehicles=>'bus, plane', :bus=>1, :train=>0, :plane=>1, :ferry=>0)
+ result3 = Result.create(:start_location=>'London', :end_location=>'Toulouse', :transit_time=>15, :start_date=>'08/12/2011', :start_time=>'20:00:00',:end_date=>'2011-08-12',:end_time=>'11:00:00', :stops => 5,
+	:price_tag=>115.0, :real_price=>140.0, :escore=>7, :vehicles=>'bus', :bus=>1, :train=>0, :plane=>0, :ferry=>0)
 	
  #result4 = Result.create(:start_location=>'London', :end_location=>'Toulouse', :transit_time=>3.3, :start_date=>'2011/08/12', :start_time=>'20:00:00',:end_date=>'2011-08-12',:end_time=>'11:00:00', :stops => 0,	:price_tag=>315.0, :real_price=>340.0, :escore=>2, :vehicles=>['plane'])
  #result5 = Result.create(:start_location=>'Paris', :end_location=>'Toulouse', :transit_time=>8, :start_date=>'2011/08/12', :start_time=>'20:00:00',:end_date=>'2011-08-12',:end_time=>'11:00:00', :stops => 0,:price_tag=>58.0, :real_price=>60.0, :escore=>7, :vehicles=>['bus'])

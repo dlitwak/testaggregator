@@ -1,12 +1,32 @@
 		<div class="explanationtitle">
 			<%= inbetweener.start_name %> > <%= inbetweener.end_name %>
 		</div>
+
+<%= form_tag '/results', :method => 'get', :id => "inbetweeners-transportation-form" do %>
 		<div id="choices1">
-			<label for="taxi1">Taxi </label><input type="radio" id="taxi1" name="trans1" value="taxi" />
-			<label for="shuttle1">Shuttle </label><input type="radio" id="shuttle1" name="trans1" value="shuttle"/>
-			<label for="train1">Train </label><input type="radio" id="train1" name="trans1" value="train" checked/>
-			<label for="bus1">Bus </label><input type="radio" id="bus1" name="trans1" value="bus"/>
+			<label for="vehicle_type_train">Train </label><%= radio_button_tag 'vehicle_type', 'train', true %>
+			<label for="vehicle_type_taxi">Taxi: </label><%= radio_button_tag 'vehicle_type', 'taxi', false %>
+			<label for="vehicle_type_bus">Bus: </label><%= radio_button_tag 'vehicle_type', 'bus', false %>
+			<label for="vehicle_type_shuttle">Shuttle: </label><%= radio_button_tag 'vehicle_type', 'shuttle', false %>
 		</div>
-		<div id="tweenresult1">
-		Estimated Cost: SOLVE THIS
+
+		<div class="tweenresult">
+		Estimated Cost: 
+		<div id="leg_price" style="display:inline"></div>
+			<%= render 'layouts/leg_price' %>
+
 		</div>
+<% end %>
+
+
+
+
+<script>
+/*$(document).ready(function (){
+	$('#vehicle_type_train, #vehicle_type_taxi, #vehicle_type_bus, #vehicle_type_shuttle').live("change", function(){
+		$.get($(this).attr('action'), $(this).serialize(), null, "script");
+		return false;
+		});
+		});
+*/
+</script>
