@@ -11,6 +11,12 @@ module Testaggregator
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+def url_escape(string)
+string.gsub(/([^ a-zA-Z0-9_.-]+)/n) do
+'%' + $1.unpack('H2' * $1.size).join('%').upcase
+end.tr(' ', '+')
+end
+
 config.action_view.javascript_expansions[:defaults] = %w(rails jquery.min jquery-ui.min)
    
     # Custom directories with classes and modules you want to be autoloadable.

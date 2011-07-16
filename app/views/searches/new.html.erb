@@ -65,16 +65,16 @@ $('#taxicheckbox').ezMark({checkboxCls: 'ez-checkbox-taxi', checkedCls: 'ez-chec
 
 $(function()
 {
-	$('#start_date').datepicker({dateFormat: 'yy-mm-dd'});
+	$('#start_date').datepicker({dateFormat: 'yy-mm-dd', minDate: '2011-09-12', maxDate: '2011-09-12'});
 });
 
 $(function()
 {
-	$('#end_date').datepicker({dateFormat: 'yy-mm-dd'});
+	$('#return_date').datepicker({dateFormat: 'yy-mm-dd', minDate: '2011-09-19', maxDate: '2011-09-19'});
 });
 	$(function() {
 		var availableTags = [
-			"Talcahuano","Temuco","Vina del Mar","Puente Alto","Talca","Valparaiso","Concepcion","Santiago","Antofagasta","San Bernardo","Rancagua","Paris", "Toulouse","London"];
+			"Paris", "Toulouse","London", "New York City", "Washington DC", "Tallinn", "Stockholm"];
 		$( "#start" ).autocomplete({
 			source: availableTags
 		});

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110709011427) do
+ActiveRecord::Schema.define(:version => 20110715195825) do
 
   create_table "inbetweeners", :force => true do |t|
     t.string   "company"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20110709011427) do
     t.integer  "bus"
     t.integer  "plane"
     t.integer  "ferry"
+    t.string   "departure"
+    t.string   "arrival"
   end
 
   create_table "voyages", :force => true do |t|
@@ -71,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20110709011427) do
     t.date     "start_date"
     t.date     "end_date"
     t.time     "end_time"
+    t.string   "departure"
+    t.string   "arrival"
   end
 
 end

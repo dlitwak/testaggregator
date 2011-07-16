@@ -340,3 +340,91 @@ padding:5px;
 float: right;
 }
 
+#result-time{
+background: white;
+float:left;
+padding:5px;
+margin-left: 5px;
+}
+
+#result-stops{
+background: white;
+float:left;
+padding:5px;
+margin-left: 5px;
+}
+
+#result-total-pricetag{
+background: white;
+float:left;
+padding:5px;
+margin-left: 5px;
+}
+
+#result-final-estimated{
+background: white;
+float:left;
+padding:5px;
+margin-left: 5px;
+}
+#route{
+padding: 15px;
+width: 800px;
+height: 1200px;
+background: #F2F2F2;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+
+#maps{
+width: 300px;
+
+background: white;
+float: right;
+margin-top: 15px;
+padding:10px;
+}
+
+#map_canvas { height: 100% }
+
+#googlemaps-departure{
+float:right;
+
+}
+
+#googlemaps-arrival{
+float:right;
+
+}
+
+#route-itinerary{
+float:left;
+}
+
+#departure-choice{
+float:left;
+background: #F2F2F2;
+margin-bottom: 10px;
+padding: 5px;
+}
+
+#arrival-choice{
+float:right;
+background: #F2F2F2;
+margin-bottom: 10px;
+padding: 5px;
+}
+
+#leg{
+background: #659EC7;
+}
+
+#itinerary-title{
+background:#659EC7;
+padding: 10px;
+margin-top: 15px;
+width: 70px;
+}
+

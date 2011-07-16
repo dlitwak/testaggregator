@@ -16,7 +16,7 @@
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">
 
-<%= javascript_include_tag "jquery.livequery.js" %>     
+<script src="/javascripts/jquery.livequery.js?1307921542" type="text/javascript"></script>     
 
 
   <link href="/stylesheets/basic.css?1305875305" media="screen" rel="stylesheet" type="text/css" /> 
@@ -25,7 +25,8 @@
 <link href="/stylesheets/jquery-ui-1.8.13.custom.css?1307561787" media="screen" rel="stylesheet" type="text/css" /> 
 <link href="/stylesheets/results.css?1306462805" media="screen" rel="stylesheet" type="text/css" /> 
 
-  <%= csrf_meta_tag %>
+  <meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="Fs2GlvvmzWABx/WrShFQfn195xCzRJs1w/7C1B5mzBE="/>
 <style type="text/css">
   html { height: 100% }
   body { height: 100%; margin: 0px; padding: 0px }
@@ -50,11 +51,74 @@
 </head>
 <body onload="initialize()">
 
-<%= yield %>
-<%= yield :javascript %>
+<p id="notice"></p>
+<h3>Your Route</h3>
+<div id="route">
+	<div id="result-total-pricetag" class="round2">	
+	  <b>Total Price Tag</b>
+	  155.0
+	</div>
+	<div id="result-final-estimated" class="round2">
+	  <b>Estimated Final Price</b>
+	  220.0
+	</div>
+	<div id="result-stops" class="round2">
+	  <b>Transfers</b>
+	  2
+	</div>
+	<div id="result-time" class="round2">
+	  <b>Total Transit Time</b>
+	  7.5
+	</div>
+<div>
+<table class="trips">
+<tr>
+<td class="hed" colspan="4">Your Voyages</td>
+</tr>
+	<tr>
+		<td> <img alt="Easyjet" src="/images/companylogothumbnails/easyjet.jpg?1306286698" /></td>
+		<td>
+			From: London<br/> 
+			To: Paris<br/> 
+			Departure: Sat at 08:00PM, 08/12/11  </br>
+			Arrival: Sat at 11:00AM, 08/12/11  </br> 
+			Transit Time: 2.0</td>
+		<td> Book this Leg!</td>
+	</tr>
+	<tr>
+		<td> <img alt="Sncf" src="/images/companylogothumbnails/sncf.jpg?1306286796" /></td>
+		<td>
+			From: Paris<br/> 
+			To: Toulouse<br/> 
+			Departure: Sat at 08:00PM, 08/12/11  </br>
+			Arrival: Sat at 11:00AM, 08/12/11  </br> 
+			Transit Time: 5.5</td>
+		<td> Book this Leg!</td>
+	</tr>
+</table>
+</div>
+</div>
+<div id="mappy">
+
+
+
+</div>
+
+initialize();
+</script>
+<div id="map_canvas" style="width: 20%; height: 45%"></div>
+
+
+
 
 <footer>
-<%= render 'layouts/footer' %>
+<div id="footer">
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+	  <li><a href="/jobs">Jobs</a></li>
+    </ul>
+</div>
 </footer>
 
 </body>

@@ -1,0 +1,155 @@
+
+
+<p id="notice"><%= notice %></p>
+<div id="route" class="round">
+<div>
+	<% @voyages = @result.voyages %>
+	<div id="result-total-pricetag" class="round2">	
+	  <b>Total Price Tag</b>
+	  <img id="pricetag" src="/images/pricetag.jpg" tooltip="Pricetag"/>
+	  <%= @result.price_tag %>
+	</div>
+	<div id="result-final-estimated" class="round2">
+	  <b>Estimated Final Price</b>
+	  <img id="realcost" src="/images/dollar.jpg" tooltip="Estimated Total Price"/>
+	  <%= @result.real_price %>
+	</div>
+	<div id="result-stops" class="round2">
+	  <b>Transfers</b>
+	  <img id="stops" src="/images/stop.png" tooltip="# of tops"/>
+	  <%= @result.stops %>
+	</div>
+	<div id="result-time" class="round2">
+	  <b>Total Transit Time</b>
+	  <img id="time1" src="/images/time.png" tooltip="# of tops"/>
+	  <%= @result.transit_time %>
+	</div>
+	<div id="route-itinerary">
+		<div id="itinerary-title" class="round">
+			<b>Itinerary</b>
+		</div>
+		<table class="trips">
+		<% @voyages.each do |voyage| %>
+			<tr>
+				<div id="leg" class="round">
+					<td> <%= image_tag ("companylogothumbnails/"+voyage.company+".jpg") %></td>
+					<td>
+						<b>Departs </b><%= voyage.departure %>, <%= voyage.start_location %><br/> 
+						<b>on</b> <%= voyage.start_time.strftime("%a at %I:%M%p") %>, <%= voyage.start_date.strftime("%m/%d/%y") %>  </br>
+						<b>Arrives </b><%= voyage.arrival %>, <%= voyage.end_location %><br/> 
+						<b>on</b> <%= voyage.end_time.strftime("%a at %I:%M%p") %>, <%= voyage.end_date.strftime("%m/%d/%y") %>  </br> 
+						<b>Leg Transit Time:</b> <%= voyage.transit_time %></td>
+					
+				</div>
+			</tr>
+		<% end %>
+		</table>
+	</div>
+
+	<script>
+	var directionDisplay;
+	var directionsService = new google.maps.DirectionsService();
+	var map;
+
+	function initialize() {
+	  directionsDisplay_arrival = new google.maps.DirectionsRenderer();
+	  directionsDisplay_departure = new google.maps.DirectionsRenderer();
+
+	  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+	  var myOptions = {
+	    zoom:7,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP,
+	    center: chicago
+	  }
+	  map_arrival= new google.maps.Map(document.getElementById("map_canvas_arrival"), myOptions);
+	  directionsDisplay_arrival.setMap(map_arrival);
+	directionsDisplay_arrival.setPanel(document.getElementById("directionsPanel_arrival"));
+	  map_departure = new google.maps.Map(document.getElementById("map_canvas_departure"), myOptions);
+	  directionsDisplay_departure.setMap(map_departure);
+	directionsDisplay_departure.setPanel(document.getElementById("directionsPanel_departure"));
+
+
+	calcRoute_arrival();
+	calcRoute_departure();
+
+	}
+
+	function calcRoute_departure() {
+	  //var start = document.getElementById("start").value;
+	  //var end = document.getElementById("end").value;
+	var start = qs["start_address"];// +", "+ qs["start_location"];
+	var end = qs["departure"];// +", "+ qs["start_location"];
+
+	  var request = {
+	    origin:start,
+	    destination:end,
+	    travelMode: google.maps.TravelMode.DRIVING
+	  };
+	  directionsService.route(request, function(result, status) {
+	    if (status == google.maps.DirectionsStatus.OK) {
+	      directionsDisplay_departure.setDirections(result);
+	    }
+	  });
+	}
+
+	function calcRoute_arrival() {
+	  //var start = document.getElementById("start").value;
+	  //var end = document.getElementById("end").value;
+	var start = qs["arrival"]; +", "+ qs["end_location"];
+	var end = qs["end_address"];// +", "+ qs["end_location"];
+
+	  var request = {
+	    origin:start,
+	    destination:end,
+	    travelMode: google.maps.TravelMode.DRIVING
+	  };
+	  directionsService.route(request, function(result, status) {
+	    if (status == google.maps.DirectionsStatus.OK) {
+	      directionsDisplay_arrival.setDirections(result);
+	    }
+	  });
+	}
+	</script>
+	<div id='maps' class='round'>
+		<script>
+		document.getElementById('googlemaps-arrival').style.display='none';
+		</script>
+		<div id="departure-choice" class="round">
+		<label for="departure"> Departure Map </label><input type="radio" name="map-choice" id="departure" value="departure" onClick="if(this.checked){document.getElementById('googlemaps-departure').style.display='inline';}if(this.checked){document.getElementById('googlemaps-arrival').style.display='none';}" checked >
+		</div>
+		<div id="arrival-choice" class="round">	
+		<label for="arrival"> Arrival Map </label><input type="radio" name="map-choice" id="arrival" value="arrival" onClick="if(this.checked){document.getElementById('googlemaps-departure').style.display='none';}if(this.checked){document.getElementById('googlemaps-arrival').style.display='inline';}">
+		</div>
+		<div id='googlemaps-departure'>
+			<input type="hidden" id="start" name="start_address" onchange="calcRoute()">
+			<input type="hidden" id="end" onchange="calcRoute()">
+			<div id="map_canvas_departure" style="width: 300px; height: 300px;"></div>
+			<div id="directionsPanel_departure" style="float:right;width:300px;"></div>
+		</div>
+		<div id='googlemaps-arrival' style='display:hidden;'>
+			<div id="map_canvas_arrival" style="width: 300px; height: 300px;"></div>
+			<div id="directionsPanel_arrival" style="float:right;width:300px;"></div>
+		</div>
+	</div>
+	<script>
+	var qs = (function(a) {
+	    if (a == "") return {};
+	    var b = {};
+	    for (var i = 0; i < a.length; ++i)
+	    {
+		var p=a[i].split('=');
+		if (p.length != 2) continue;
+		b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+	    }
+	    return b;
+	})(window.location.search.substr(1).split('&'));
+	//WHY WON'T THIS WORK!!
+	$(document).ready(function() 
+	{
+	$('input[name=start_address]').attr('text', qs["start_address"]);
+	});
+
+	</script>
+</div>
+</div>
+

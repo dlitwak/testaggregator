@@ -18,7 +18,13 @@
 	</div>
 	
 </div>
-
+<script>
+//using the parents line creates a problem with form inputs that are outside the <form> </form> brackets
+$('.submittable').live('change', function() {
+  //$(this).parents('form:first').submit();
+$('#searchform').submit();
+});
+</script>
 	
 	<script>
 var qs = (function(a) {
@@ -42,13 +48,15 @@ $('input[name=carcheckbox]').attr('checked', function(){if(qs["carcheckbox"]==1)
 $('input[name=taxicheckbox]').attr('checked', function(){if(qs["taxicheckbox"]==1){return true;}else{return false;}});
 $('input[name=bikecheckbox]').attr('checked', function(){if(qs["bikecheckbox"]==1){return true;}else{return false;}});
 //DATES
-$('input[name=start-date]').attr('value', qs["start_date"]);
-$('input[name=end-date]').attr('value', qs["end_date"]);
+$('input[name=start_date]').attr('value', qs["start_date"]);
+$('input[name=return_date]').attr('value', qs["return_date"]);
 
 //LOCATIONS
-$('input[name=start-location]').attr('value', qs["start_location"]);
-$('input[name=end-location]').attr('value', qs["end_location"]);
+$('input[name=start_location]').attr('value', qs["start_location"]);
+$('input[name=end_location]').attr('value', qs["end_location"]);
 
+$('input[name=start_address]').attr('value', qs["start_address"]);
+$('input[name=end_address]').attr('value', qs["end_address"]);
 
 
 	$(function() {
@@ -245,14 +253,16 @@ slideTime2();
 		$( "#datepicker-start" ).datepicker({
 			showOn: "button",
 			buttonImage: "images/calendar.gif",
-			buttonImageOnly: true
+			buttonImageOnly: true,
+			dateFormat: 'yy-mm-dd'
 		});
 	});
 		$(function() {
 		$( "#datepicker-end" ).datepicker({
 			showOn: "button",
 			buttonImage: "images/calendar.gif",
-			buttonImageOnly: true
+			buttonImageOnly: true,
+			dateFormat: 'yy-mm-dd'
 		});
 	});
 	</script>

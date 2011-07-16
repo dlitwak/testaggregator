@@ -1,5 +1,5 @@
 		<div id="sharing_hide" style="display:block">
-				<%= form_tag results_path, :method => 'get', :onSubmit =>"rememberinput('start_location', 'end_location')", :id => 'searchform' do %>
+				<%= form_tag results_path, :method => 'get', :onsubmit =>"rememberinput('start_location', 'end_location')", :id => 'searchform' do %>
 						<div id="locations" style="margin-top: 20px;">
 							<div id="start-address" class="round">
 								START ADDRESS
@@ -12,10 +12,7 @@
 										<input style="width:150px;" id="start" name="start_location">
 									</div>
 								</div>
-								<div id="startzipcountry">
-									<label for="startzip">Zip </label><input style="width:80px;" id="startzip" name="Start Zip Code">
-									<label for="startcountry">Country </label><input style="width:80px;" id="startcountry" name="StartCountry"></br>
-								</div>	
+								
 							</div>
 							<div id="end-address" class="round">
 								END ADDRESS
@@ -27,11 +24,7 @@
 									<div class="ui-widget" style="display:inline">
 										<input style="width:150px;" id="end" name="end_location">
 									</div></br>
-								</div>
-								<div id="endzipcountry">								
-									<label for="endzip">Zip </label><input style="width:80px;" id="endzip" name="End Zip Code">
-									<label for="endcountry">Country </label><input style="width:80px;" id="endcountry" name="End Country"></br>
-								</div>							
+								</div>						
 							</div>
 </br></br></br></br></br></br></br></br>
 						</div>
@@ -41,8 +34,8 @@
 								<input type="text" name="start_date" id="start_date" />
 							</div>
 							<div style="display:inline" id="end_date_hide">
-								<label for="end_date">Return Date</label>
-								<input type="text" name="end_date" id="end_date" />
+								<label for="return_date">Return Date</label>
+								<input type="text" name="return_date" id="return_date" />
 							</div>
 						</div>
 						</br>

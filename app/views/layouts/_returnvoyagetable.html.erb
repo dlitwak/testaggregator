@@ -1,0 +1,75 @@
+<div id="price-sort-to">
+		
+		<button><%= link_to "Convenience", :sort => "escore" %></button>
+		<button><%= link_to "RealPrice", :sort => "real_price" %></button>
+		<button><%= link_to "Stops", :sort => "stops" %></button>
+		<button><%= link_to "Time", :sort => "transit_time" %></button>
+	</div>
+	<div id="results">
+       
+			<table class="round">
+			  <tr>
+				<th style="vertical-align:top; display:none">Efficiency Score</th>
+				<th style="vertical-align:top; display:none">Real Price</th> 
+				<th style="vertical-align:top; display:none">Transit Time</th>
+				<th style="vertical-align:top; display:none">Stops</th>
+				<th style="vertical-align:top; display:none">Display</th>
+				
+			  </tr>
+			<% total = 0 %>
+			
+			<% @returnresults.each do |result| %>
+				
+				<% @voyages = result.voyages %>
+					  <tr>
+						<td style="vertical-align:top; display:none"><%= result.escore%></td>
+						<td style="vertical-align:top; display:none"><%= result.real_price %></td>
+
+						<td style="vertical-align:top; display:none"><%= result.transit_time %></td>
+						<td style="vertical-align:top; display:none"><%= result.stops %></td>
+						<td class="dragonlythis">
+							<div class="round" id="voyage">
+								<div class="round2" id="itinerary">
+									<% @voyages.each do |voyage| %>
+										<%= image_tag (voyage.transportation+".jpg", :tooltip => "From:"+voyage.start_location+"<br/> 
+										To:"+voyage.end_location+"<br/> 
+										Departure:"+voyage.start_time.strftime("%a at %I:%M%p")+", "+voyage.start_date.strftime("%m/%d/%y")+" </br>
+										Arrival:"+voyage.end_time.strftime("%a at %I:%M%p")+", "+voyage.end_date.strftime("%m/%d/%y")+"</br> 
+										Transit Time: "+voyage.transit_time.to_s) %>
+									<% end %>	
+									<div id="details">
+										<div class="dialog" title="Voyage Details">
+											<%= render 'layouts/dialog', :voyages => @voyages, :result => result %>
+										</div>
+									</div>
+									
+									<%= link_to 'GO', URI.escape('results/'+result.id.to_s+'?start_address='+params[:start_address]+','+params[:start_location]+','+params[:start_country]+'&end_address='+params[:end_address]+','+params[:end_location]+','+params[:end_country]) %>
+									<button class="details-button">View</button>
+									<div class="round2" id="info">
+									Departure: <%= result.start_time.strftime("%a at %I:%M%p") %>, <%= result.start_date.strftime("%m/%d/%y") %>  </br>
+									Arrival: <%= result.end_time.strftime("%a at %I:%M%p") %>, <%= result.end_date.strftime("%m/%d/%y") %>  </br>
+									</div>
+								</div>
+								<div class="round2" id="cost">
+									<%= render 'layouts/cost', :result => result %>
+								</div>
+							</div>
+						</td>
+					  </tr>
+				
+			<% end %>
+			<script type="text/javascript">
+				$(".details-button").each(function(i) {
+					$(this).attr("id", "details-button" + i);
+				});
+				$(".dialog").each(function(k) {
+					$(this).attr("id", "dialog" + k);
+				});
+				
+			</script>
+	
+			</table>
+
+
+ </div>
+	

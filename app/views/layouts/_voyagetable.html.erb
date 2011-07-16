@@ -1,9 +1,9 @@
 	<div id="price-sort-to">
 		
-		<button><%= link_to "Convenience", :sort => "escore" %></button>
-		<button><%= link_to "RealPrice", :sort => "real_price" %></button>
-		<button><%= link_to "Stops", :sort => "stops" %></button>
-		<button><%= link_to "Time", :sort => "transit_time" %></button>
+		<button><%= link_to "Convenience", results_path(:sort => "escore", :start_address => params[:start_address], :start_location => params[:start_location], :end_address => params[:end_address], :end_location => params[:end_location], :start_date => params[:start_date], :return_date => params[:return_date], :traincheckbox => params[:traincheckbox], :planecheckbox => params[:planecheckbox], :ferrycheckbox => params[:ferrycheckbox], :buscheckbox => params[:buscheckbox], :traincheckbox => params[:traincheckbox], :travelers => params[:travelers], :bags => params[:bags]) %></button>
+		<button><%= link_to "RealPrice", results_path(:sort => "real_price", :start_address => params[:start_address], :start_location => params[:start_location], :end_address => params[:end_address], :end_location => params[:end_location], :start_date => params[:start_date], :return_date => params[:return_date], :traincheckbox => params[:traincheckbox], :planecheckbox => params[:planecheckbox], :ferrycheckbox => params[:ferrycheckbox], :buscheckbox => params[:buscheckbox], :traincheckbox => params[:traincheckbox], :travelers => params[:travelers], :bags => params[:bags]) %></button>
+		<button><%= link_to "Stops", results_path(:sort => "stops", :start_address => params[:start_address], :start_location => params[:start_location], :end_address => params[:end_address], :end_location => params[:end_location], :start_date => params[:start_date], :return_date => params[:return_date], :traincheckbox => params[:traincheckbox], :planecheckbox => params[:planecheckbox], :ferrycheckbox => params[:ferrycheckbox], :buscheckbox => params[:buscheckbox], :traincheckbox => params[:traincheckbox], :travelers => params[:travelers], :bags => params[:bags])%></button>
+		<button><%= link_to "Time", results_path(:sort => "transit_time", :start_address => params[:start_address], :start_location => params[:start_location], :end_address => params[:end_address], :end_location => params[:end_location], :start_date => params[:start_date], :return_date => params[:return_date], :traincheckbox => params[:traincheckbox], :planecheckbox => params[:planecheckbox], :ferrycheckbox => params[:ferrycheckbox], :buscheckbox => params[:buscheckbox], :traincheckbox => params[:traincheckbox], :travelers => params[:travelers], :bags => params[:bags]) %></button>
 	</div>
 	<div id="results">
        
@@ -18,7 +18,7 @@
 			  </tr>
 			<% total = 0 %>
 			
-			<% @results.each do |result| %>
+			<% @startresults.each do |result| %>
 				
 				<% @voyages = result.voyages %>
 					  <tr>
@@ -43,7 +43,7 @@
 										</div>
 									</div>
 									
-									<%= link_to 'GO', result_path(result.id) %>
+									<%= link_to 'GO', URI.escape('results/'+result.id.to_s+'?start_address='+params[:start_address]+','+params[:start_location]+'&end_address='+params[:end_address]+','+params[:end_location]+'&departure='+result.departure+'&arrival='+result.arrival) %>
 									<button class="details-button">View</button>
 									<div class="round2" id="info">
 									Departure: <%= result.start_time.strftime("%a at %I:%M%p") %>, <%= result.start_date.strftime("%m/%d/%y") %>  </br>
@@ -66,8 +66,10 @@
 					$(this).attr("id", "dialog" + k);
 				});
 				
-			</script>	
+			</script>
+	
 			</table>
+
 
  </div>
 	
