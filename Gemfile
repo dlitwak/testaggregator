@@ -10,7 +10,7 @@ gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails'
 gem 'acts_as_list'
 #gem 'pg', :require => 'pg'
-gem 'heroku'
+#gem 'heroku'
 # Use unicorn as the web server
 # gem 'unicorn'
 
