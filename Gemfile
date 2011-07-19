@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails'
 gem 'acts_as_list'
+#gem 'pg', :require => 'pg'
 # Use unicorn as the web server
 # gem 'unicorn'
 
